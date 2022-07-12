@@ -1,11 +1,11 @@
 package by.makei.interview.service;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class CustomService {
+    public static final Integer MAX_POSSIBLE_VALUE = 46_340;
+
     private CustomService() {
     }
 
@@ -13,13 +13,34 @@ public final class CustomService {
      * Problem 1: "Sorted list squared"
      * You have a sorted list of integers. Create a sorted list with all elements squared. Try to do it without explicitly using .sort() and if possible in O(n).
      **/
-    public static List<BigInteger> getSquaredList(List<Integer> integers) {
-        BigInteger[] bigIntegers = new BigInteger[integers.size()];
-        for (int i = 0; i < integers.size(); i++) {
-            BigInteger tempBigInteger = new BigInteger(String.valueOf(integers.get(i)));
-            bigIntegers[i] = tempBigInteger.multiply(tempBigInteger);
+    public static List<Integer> getSquaredList(List<Integer> integers) {
+        LinkedList<Integer> list = new LinkedList<>();
+        int currentSqrtInt;
+        for (Integer integer : integers) {
+            if (Math.abs(integer) > MAX_POSSIBLE_VALUE) {
+                System.out.println("Too big value");
+                throw new RuntimeException();
+            }
+            currentSqrtInt = integer * integer;
+            if (list.isEmpty()) {
+                list.add(currentSqrtInt);
+            } else {
+                if (list.getLast() <= currentSqrtInt) {
+                    list.add(currentSqrtInt);
+                } else if (list.getFirst() >= currentSqrtInt) {
+                        list.add(0,currentSqrtInt);
+                    }else {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i) >= currentSqrtInt) {
+                            list.add(i, currentSqrtInt);
+                            break;
+                        }
+                    }
+                }
+            }
         }
-        return new ArrayList<>(Arrays.asList(bigIntegers));
+
+        return list;
     }
 
     /**
