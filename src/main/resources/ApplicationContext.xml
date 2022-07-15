@@ -10,7 +10,7 @@
     <context:property-placeholder
             location="classpath:application1.properties"/> <!-- there are can be a few property-placeholder-->
 
-    <context:component-scan base-package="spring_introduction"/> <!-- base package for scan-->
+    <context:component-scan base-package="by.makei.spring.spring_introduction"/> <!-- base package for scan-->
 
 <!--    <bean id="pet"-->
 <!--          class="spring_introduction.bean.Cat"-->
