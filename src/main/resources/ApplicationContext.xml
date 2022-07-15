@@ -3,18 +3,33 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd"
->
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="pet"
-          class="spring_introduction.Cat">
-    </bean>
+    <context:property-placeholder
+            location="classpath:application1.properties"/> <!-- there are can be a few property-placeholder-->
+
+    <context:component-scan base-package="spring_introduction"/> <!-- base package for scan-->
+
+<!--    <bean id="pet"-->
+<!--          class="spring_introduction.bean.Cat"-->
+<!--    >-->
+<!--        &lt;!&ndash;by default scope is prototype&ndash;&gt;-->
+
+<!--        <constructor-arg value="Kitty"/> &lt;!&ndash; set field with constructor&ndash;&gt;-->
+<!--        <property name="name" value="${cat.name}"/>  &lt;!&ndash; set field with setter&ndash;&gt;-->
+
+<!--    </bean>-->
 
     <bean id="person"
-          class="spring_introduction.Person">
-        <constructor-arg ref="pet"/>
+          class="by.makei.spring.spring_introduction.configuration_by_xml_annotation.bean.Person"
+          scope="prototype"
+    >
+        <constructor-arg name="surname" value="FloMaster"/>
+        <constructor-arg value="${person.name}"/> <!-- name can be skipped-->
+        <constructor-arg name="pet" ref="snake"/>
+
     </bean>
 
 </beans>

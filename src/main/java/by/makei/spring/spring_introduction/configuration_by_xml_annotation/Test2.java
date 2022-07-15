@@ -1,5 +1,6 @@
-package spring_introduction;
+package by.makei.spring.spring_introduction.configuration_by_xml_annotation;
 
+import by.makei.spring.spring_introduction.configuration_by_xml_annotation.bean.Pet;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test2 {
