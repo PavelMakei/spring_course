@@ -15,7 +15,18 @@ public class Library {
 
     public String returnMagazine(){
         System.out.println("Вернуть журнал");
-        return "Ок";
+        return "This is returning string";
+    }
+
+    public String addBook(){
+        System.out.println("Добавить книгу");
+        try {
+            int a = 1/0;
+        }catch (ArithmeticException e){
+            System.out.println("Catch arithmetic exception in Library");
+            throw e;
+        }
+        return "This is addBookMethod";
     }
 
 }

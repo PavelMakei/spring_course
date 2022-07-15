@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class LoggingAspect {
 
-    @Before("execution(public void getBook())")
+    @Before(value = "execution(public void getBook())" )
     public void beforeGetBookAdvice(){
         System.out.println("Попытка получить книгу (order1)");
     }
